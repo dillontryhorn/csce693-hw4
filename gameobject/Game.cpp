@@ -5,14 +5,17 @@
 #include "SDL2/SDL_image.h"
 
 #include "texture_utils.hpp"
-#include "GameObject.hpp"
+#include "Pacman.hpp"
+#include "Tank.hpp"
+#include "Chopper.hpp"
+#include <memory>
+#include <vector>
+
 
 SDL_Renderer* Game::renderer{};
 SDL_Window* Game::window{};
 
-GameObject* tank{};
-GameObject* chopper{};
-GameObject* pacman{};
+std::vector<std::unique_ptr<GameObject>> game_objects;
 
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -44,18 +47,14 @@ Game::~Game()
    SDL_DestroyWindow(window);
    SDL_Quit();
 
-   delete tank;
-   delete chopper;
-   delete pacman;
-
    std::cout << "Game cleaned..." << std::endl;
 }
 
 void Game::load_level()
 {
-   tank = new GameObject("../assets/images/tank-big-down.png", 0.0f, 0.0f, 0.5f, 0.5f);
-   chopper = new GameObject("../assets/images/chopper-single.png", 50.0f, 50.0f, 0.5f, 0.5f);
-   pacman = new GameObject("../assets/images/pacman/pacman_32x32.png", 100.0f, 100.0f, 0.5f, 0.5f);
+   game_objects.push_back(std::move(std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f)));
+   game_objects.push_back(std::move(std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f)));
+   game_objects.push_back(std::move(std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f)));
 }
 
 void Game::handle_events()
@@ -73,17 +72,15 @@ void Game::handle_events()
 
 void Game::update(const float dt)
 {
-   tank->update(dt);
-   chopper->update(dt);
-   pacman->update(dt);
+   for(auto&& object : game_objects)
+      object->update(dt);
 }
 
 void Game::render()
 {
    SDL_RenderClear(renderer);
-   tank->render();
-   chopper->render();
-   pacman->render();
+   for(auto&& object : game_objects)
+      object->render();
    SDL_RenderPresent(renderer);
 }
 
