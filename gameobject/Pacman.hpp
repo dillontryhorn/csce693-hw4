@@ -9,7 +9,9 @@ public:
    Pacman(const float xpos, const float ypos,
           const float xvel, const float yvel): 
           GameObject("../assets/images/pacman/pacman_32x32.png", xpos, ypos, xvel, yvel) {}
-   virtual ~Pacman() {}
+   ~Pacman() {}
+   virtual void triggerEvent() override;
+
 };
 
 #endif

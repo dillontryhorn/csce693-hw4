@@ -9,7 +9,9 @@ public:
     Tank(const float xpos, const float ypos,
           const float xvel, const float yvel): 
           GameObject("../assets/images/tank-big-down.png", xpos, ypos, xvel, yvel) {}
-    virtual ~Tank() {}
+    ~Tank() {}
+    virtual void triggerEvent() override;
+    
 };
 
 #endif

@@ -72,15 +72,13 @@ void Game::handle_events()
 
 void Game::update(const float dt)
 {
-   for(auto&& object : game_objects)
-      object->update(dt);
+   for(auto& object : game_objects) object->update(dt);
 }
 
 void Game::render()
 {
    SDL_RenderClear(renderer);
-   for(auto&& object : game_objects)
-      object->render();
+   for(auto& object : game_objects) object->render();
    SDL_RenderPresent(renderer);
 }
 

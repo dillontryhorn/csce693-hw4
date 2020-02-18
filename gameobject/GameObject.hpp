@@ -9,10 +9,11 @@ public:
    GameObject(const char* filename_img,
               const float xpos, const float ypos,
               const float xvel, const float yvel);
-   virtual ~GameObject();
+   ~GameObject();
 
    void update(const float dt);
    void render();
+   virtual void triggerEvent() = 0;
 
 private:
    float xpos{}, ypos{};
