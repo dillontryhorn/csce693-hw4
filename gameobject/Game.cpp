@@ -3,19 +3,10 @@
 
 #include <iostream>
 #include "SDL2/SDL_image.h"
-
 #include "texture_utils.hpp"
-#include "Pacman.hpp"
-#include "Tank.hpp"
-#include "Chopper.hpp"
-#include <memory>
-#include <vector>
-
 
 SDL_Renderer* Game::renderer{};
 SDL_Window* Game::window{};
-
-std::vector<std::unique_ptr<GameObject>> game_objects;
 
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
