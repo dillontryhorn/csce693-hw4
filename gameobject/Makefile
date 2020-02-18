@@ -9,6 +9,7 @@ OBJS = \
 	Game.o \
 	texture_utils.o \
 	GameObject.o \
+	Unit.o \
 	Chopper.o \
 	Pacman.o \
 	Tank.o \

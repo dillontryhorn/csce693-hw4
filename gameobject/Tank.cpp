@@ -1,6 +1,6 @@
 #include "Tank.hpp"
 #include <iostream>
 
-void Tank::triggerEvent() {
-    std::cout << "Boom boom boom" << std::endl;
+void Tank::deployWeapon() const {
+    std::cout << "Boom boom boom" << std::endl; //Tank special attack
 }

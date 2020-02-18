@@ -4,23 +4,18 @@
 
 #include "SDL2/SDL.h"
 
+/*********************************
+ * Abstract GameObject Class -
+ * Interface for all game objects,
+ * Update and render should both
+ * call every frame
+ *********************************/
+
 class GameObject {
 public:
-   GameObject(const char* filename_img,
-              const float xpos, const float ypos,
-              const float xvel, const float yvel);
-   ~GameObject();
-
-   void update(const float dt);
-   void render();
-   virtual void triggerEvent() = 0;
-
-private:
-   float xpos{}, ypos{};
-   float xvel{}, yvel{};
-
-   SDL_Texture* texture{};
-   SDL_Rect src_rect, dest_rect;
+   virtual ~GameObject() = 0;
+   virtual void update(const float dt) = 0;
+   virtual void render() = 0;
 };
 
 #endif

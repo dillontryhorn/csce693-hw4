@@ -1,6 +1,6 @@
 #include "Chopper.hpp"
 #include <iostream>
 
-void Chopper::triggerEvent() {
-    std::cout << "Pew pew pew" << std::endl;
+void Chopper::deployWeapon() const {
+    std::cout << "Pew pew pew" << std::endl; //Chopper special attack
 }
