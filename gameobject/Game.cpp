@@ -43,9 +43,9 @@ Game::~Game()
 
 void Game::load_level()
 {
-   game_objects.push_back(std::move(std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f)));
-   game_objects.push_back(std::move(std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f)));
-   game_objects.push_back(std::move(std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f)));
+   game_objects.push_back(std::move(std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f))); //Tank unit
+   game_objects.push_back(std::move(std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f))); //Chopper unit
+   game_objects.push_back(std::move(std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f))); //Pacman unit
 }
 
 void Game::handle_events()
@@ -63,13 +63,13 @@ void Game::handle_events()
 
 void Game::update(const float dt)
 {
-   for(auto& object : game_objects) object->update(dt);
+   for(auto& object : game_objects) object->update(dt); //Call update of all world objects in list
 }
 
 void Game::render()
 {
    SDL_RenderClear(renderer);
-   for(auto& object : game_objects) object->render();
+   for(auto& object : game_objects) object->render(); //Render all world objects in list
    SDL_RenderPresent(renderer);
 }
 

@@ -29,7 +29,7 @@ public:
 private:
    int counter{};
    bool is_running{};
-   std::vector<std::unique_ptr<GameObject>> game_objects;
+   std::vector<std::unique_ptr<GameObject>> game_objects; //private vector of game object pointers
 };
 
 #endif
